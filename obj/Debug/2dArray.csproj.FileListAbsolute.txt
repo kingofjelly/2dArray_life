@@ -1,0 +1,5 @@
+C:\Users\dmc\Desktop\C# Investigation Apps\2dArray\2dArray\bin\Debug\2dArray.exe
+C:\Users\dmc\Desktop\C# Investigation Apps\2dArray\2dArray\bin\Debug\2dArray.pdb
+C:\Users\dmc\Desktop\C# Investigation Apps\2dArray\2dArray\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\dmc\Desktop\C# Investigation Apps\2dArray\2dArray\obj\Debug\2dArray.exe
+C:\Users\dmc\Desktop\C# Investigation Apps\2dArray\2dArray\obj\Debug\2dArray.pdb
