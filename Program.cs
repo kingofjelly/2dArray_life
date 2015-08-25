@@ -19,6 +19,7 @@ namespace _2dArray
         static void Main(string[] args)
         {
             asteriskPyramid();
+            asteriskPyramidEvolved();
         }
 
         static void asteriskPyramid()
@@ -35,7 +36,7 @@ namespace _2dArray
             string userInput;
             int userChoice;
 
-            Console.WriteLine("Please enter a numbner in numeric form");
+            Console.WriteLine("Please enter a number in numeric form");
             userInput = Console.ReadLine();
 
             //below is the method which prints asterisks in a line.
@@ -46,12 +47,13 @@ namespace _2dArray
                     //while it doesn't equal user choice, add asterisk.
                     Console.Write("*");
                 }
+                Console.WriteLine();
             }
             else
             {
                 Console.WriteLine("Invalid entry");
             }
-            while (Console.Read() != 'q') ;
+            //while (Console.Read() != 'q') ;
 
             //tryparse to int?
             /*
@@ -66,17 +68,32 @@ namespace _2dArray
             
             string userInput;
             int userChoice;
-
-            Console.WriteLine("Please enter a number in numeric form");
+            //int asteriskCounter = 0;//this is what has to be matched
+            int asteriskCounterSpillover = 0; //this will cause the app to spillover to a new line
+            Console.WriteLine("Please enter a number in numeric form \n");
             userInput = Console.ReadLine();
+            //multiple versions of i? how to solve it.
+            /* I think the way to tackle this is 1 x i = user entered value
+             * 1 x i = duplicate of user entered value. This value will be the cap it has to hit.
+             * Increment line increase?
+             * I need one number which increases each time it's hit, whilst it's under end user number
+             *             
+             */
 
             //below is the method which prints asterisks in a line.
             if (int.TryParse(userInput, out userChoice))
             {
                 for (int i = 0; i < userChoice; i++)
                 {
-                    //while it doesn't equal user choice, add asterisk.
-                    Console.Write("*");
+                    asteriskCounterSpillover++;
+                    //immidiately initialize and add count asterisk counter. Begins as 1.
+                    for (int j = 0; j < asteriskCounterSpillover; j++)
+                    {
+                        Console.Write("*");
+                        //for each number in x in counter, do asterisk, add x 1, then new line. when final total = user input, stop
+                    }
+                    Console.WriteLine();//now bump down to new line                    
+                  
                 }
             }
             else
