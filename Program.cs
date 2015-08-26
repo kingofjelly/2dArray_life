@@ -23,7 +23,7 @@ namespace _2dArray
             //asteriskPyramidEvolved();
         }
 
-        enum Choice { Asterisk = 1, AsteriskOld, Boggle, GoL, TimesTable , Null }//enums for user choices at main menu
+        enum Choice { Asterisk = 1, AsteriskOld, Boggle, GameOfLife, TimesTable , toOneHundred }//enums for user choices at main menu
 
         static void mainUserInterface()
         {
@@ -42,14 +42,16 @@ namespace _2dArray
             Console.WriteLine("3 : Run the game of boggle");
             Console.WriteLine("4 : Run game of life");
             Console.WriteLine("5 : Run 2DArray times table application");
+            Console.WriteLine("6 : Run 2DArray and loop from 1 - 100");
             userInput = Console.ReadLine();
 
             if (int.TryParse(userInput, out userChoice))//better than a parse, because it doesn't throw an exception. however parse better for handling?
             {
+                Console.WriteLine(Choice.Asterisk.ToString());
                 //switch statement here
                 switch (userChoice)
                 {
-                    case 1:
+                    case (int)Choice.Asterisk:
                         asteriskPyramidEvolved();
                         break;
                     case 2:
@@ -63,6 +65,9 @@ namespace _2dArray
                         break;
                     case 5:
                         timesTable();
+                        break;
+                    case 6:
+                        toHundred();
                         break;
                     default:
                         mainUserInterface();
@@ -179,7 +184,85 @@ namespace _2dArray
         static void timesTable()
         {
             Console.WriteLine("Times table");
+            /* I plan on using this method to teach myself about 2D arrays more thoroughly and building on the nesting of for loops, as demonstrated
+             * above, in asteriskPyramidEvolved(), in order to make a 10x10 grid form, where by it incrementally counts from 1 - 100, or does times tables
+             */
+            int[,] multiplicationTable = new int[10, 10];
+            // Fill the table
+           
+
+            for (int i = 1; i <= 10; i++)
+            {
+                //this is for values
+                for (int j = 1; j <= 10; j++)
+                {
+                    multiplicationTable[i - 1, j - 1] = i * j;
+                }
+            }
+
+           
+            for (int i = 1; i <= 10; i++)
+            {
+                //this is for displaying
+                for (int j = 1; j <= 10; j++)
+                {
+                    WritePadded(multiplicationTable[i - 1, j - 1]);
+                }
+                Console.WriteLine();
+            }
+
+
         }
+               
+
+        static void toHundred()
+        {
+            //this method counts from 1 - 100. It was worked out, revisiting asterisk advanced and the nested for loops.
+            Console.WriteLine("Counting from 1 to a hundred in a 2D array");
+            /* I plan on using this method to teach myself about 2D arrays more thoroughly and building on the nesting of for loops, as demonstrated
+             * above, in asteriskPyramidEvolved(), in order to make a 10x10 grid form, where by it incrementally counts from 1 - 100, or does times tables
+             */
+            int[,] additionTable = new int[10, 10];
+            // Fill the table
+            int numberCounter = 0;//this is an int which will be used to tally up numbers
+            for (int i = 1; i <= 10; i++)
+            {
+                //this is for values
+                //add 10 for each repeat? or at bottom
+                for (int j = 1; j <= 10; j++)
+                {                   
+                    additionTable[i - 1, j - 1] = numberCounter + 1;
+                    numberCounter++;
+                }
+
+            }
+            //THE REAL AMMENDMENTS NEED TO HAPPEN ABOVE
+            for (int i = 1; i <= 10; i++)
+            {
+                //this is for displaying
+
+                for (int j = 1; j <= 10; j++)
+                {
+                    WritePadded(additionTable[i - 1, j - 1]);
+                }
+                Console.WriteLine();
+            }
+        }
+
+        static void WritePadded(int number)
+        {
+            if (number < 10)
+            {
+                Console.Write("  ");
+            }
+            else if (number < 100)
+            {
+                Console.Write(" ");
+            }
+            Console.Write(number);
+            Console.Write(" ");
+        }
+
 
     }
 }
