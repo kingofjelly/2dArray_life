@@ -18,8 +18,64 @@ namespace _2dArray
          */
         static void Main(string[] args)
         {
-            asteriskPyramid();
-            asteriskPyramidEvolved();
+            mainUserInterface();
+            //asteriskPyramid();
+            //asteriskPyramidEvolved();
+        }
+
+        enum Choice { Asterisk = 1, AsteriskOld, Boggle, GoL, TimesTable , Null }//enums for user choices at main menu
+
+        static void mainUserInterface()
+        {
+            /*This method will utilise enums to present the user with a menu upon app load. from there, other small applications can be accessed.
+             * The aim of this is to get me using enums, opposed to if userEntry == 1.
+             *              
+             */
+            
+            string userInput;
+            int userChoice;
+            Console.Clear();
+            Console.WriteLine("Welcome to the application \n What do you want to do?");
+            Console.WriteLine("Options: See the following for a brief overview of what happens");
+            Console.WriteLine("1 : Run an application displaying a pyramid of asterisks");
+            Console.WriteLine("2 : Run an older application displaying a pyramid of asterisks");
+            Console.WriteLine("3 : Run the game of boggle");
+            Console.WriteLine("4 : Run game of life");
+            Console.WriteLine("5 : Run 2DArray times table application");
+            userInput = Console.ReadLine();
+
+            if (int.TryParse(userInput, out userChoice))//better than a parse, because it doesn't throw an exception. however parse better for handling?
+            {
+                //switch statement here
+                switch (userChoice)
+                {
+                    case 1:
+                        asteriskPyramidEvolved();
+                        break;
+                    case 2:
+                        asteriskPyramid();
+                        break;
+                    case 3:
+                        boggleGame();
+                        break;
+                    case 4:
+                        gameOfLife();
+                        break;
+                    case 5:
+                        timesTable();
+                        break;
+                    default:
+                        mainUserInterface();
+                        break;
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid entry");
+            }
+           
+
         }
 
         static void asteriskPyramid()
@@ -110,6 +166,20 @@ namespace _2dArray
              */
         }
 
+        static void boggleGame()
+        {
+            Console.WriteLine("So you want to play boggle");
+        }
+
+        static void gameOfLife()
+        {
+            Console.WriteLine("So you want to see game of life?");
+        }
+
+        static void timesTable()
+        {
+            Console.WriteLine("Times table");
+        }
 
     }
 }
