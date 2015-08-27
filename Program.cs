@@ -179,6 +179,8 @@ namespace _2dArray
         static void gameOfLife()
         {
             Console.WriteLine("So you want to see game of life?");
+            gOLClass lifeGrid = new gOLClass();
+            lifeGrid.printGrid();//forms grid consisting of 0's or 1's
         }
 
         static void timesTable()
