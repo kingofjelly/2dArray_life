@@ -5,6 +5,7 @@ using System.Text;
 
 namespace _2dArray
 {
+
     class gOLClass
     {
         /*
@@ -43,9 +44,26 @@ namespace _2dArray
             
             string [,] lifeGrid = new string [20,20];
 
+            cellClass[,] cellGrid = new cellClass[20, 20];//2d array of cell class objects
+
+            int iValue = 0;
+            int jValue = 0;
             int randomReturnedNumber = 0;// returned number from RNG method.
 
             //fill the grid
+            //for (int i = 1; i <= 20; i++)
+            //{
+            //    //i managed the grid going down. this ensures it will go down 20 lines
+            //    for (int j = 1; j <= 20; j++)
+            //    {
+            //        //j manages going across horizontally. will makes sure it goes across 20 spaces.
+            //        //this is the section where you'll need to populate it with the method below
+            //        lifeGrid[i - 1, j - 1] = randomNumer().ToString();
+            //        //Console.Write(lifeGrid[i - 1, j - 1]);
+            //    }
+            //}
+
+            ////GRID FOR FILLING TABLE WITH CELL CLASS
             for (int i = 1; i <= 20; i++)
             {
                 //i managed the grid going down. this ensures it will go down 20 lines
@@ -53,6 +71,12 @@ namespace _2dArray
                 {
                     //j manages going across horizontally. will makes sure it goes across 20 spaces.
                     //this is the section where you'll need to populate it with the method below
+
+                    //TO BE PASSED INTO METHOD
+                    randomReturnedNumber = randomNumer();
+                    iValue = i - 1;
+                    jValue = j - 1;
+
                     lifeGrid[i - 1, j - 1] = randomNumer().ToString();
                     //Console.Write(lifeGrid[i - 1, j - 1]);
                 }
@@ -115,16 +139,236 @@ namespace _2dArray
          * 
          */
 
-        private void createCell()
-        {
-            //this method creates the object which will be loaded into the array in the method above. it will contain
-            //various statements which will check if it has neighbors and whether it's alive
-            //It will do this, by examining 2 x int variables, relating to its place in the 2D array, when it's called.
+        //class below needs to be made an object
+        //private void createCell(int status, int iValue, int jValue)
+        //{
+        //    /*status = 1 or 2. Dead or alive
+        //     *iValue = [i,] 
+        //     *jValue = [,j]
+        //     */
+        //    //this method creates the object which will be loaded into the array in the method above. it will contain
+        //    //various statements which will check if it has neighbors and whether it's alive
+        //    //It will do this, by examining 2 x int variables, relating to its place in the 2D array, when it's called.
+        //    /*1. CHECK IF CREATED BEFORE                                                                                                                            X
+        //     *2. CHECK POSITION AND WHAT ADJACENT CELLS IT HAS                                                                                                      X
+        //     *3. CHECK IF ALIVE                                                                                                                                     X
+        //     *4. ASSIGN TO 2D ARRAY
+        //     *5. SECOND RUN THROUGH, SKIP TO LOWER SECTION, IF ALREADY CREATED. IF ALIVE, ADD ANOTHER TO GEN. IF NOT, RESET TO 0
+        //     *6. CHECK ADJACENT CELLS, BASED UPON BOOLEANS SET DURING FIRST RUN THROUGH. USE MATHS IN ORDER TO CHECK.
+        //     *   Said checks will be multiple if statements. E.g if topLeft = true. So there will be 8 of them, checking adjacent cells and if theyre alive.
+        //     *   This will then tally towards an aliveNeighbours int, which then decides if the cell in question will still be alive.
+        //     *
+        //     */
 
-        }
+        //    bool beenCreated = false; //this will be recorded after creation, so further iterations can skip sections when this  = true 
+
+        //    bool topLeft = false;
+        //    bool top = false;
+        //    bool topRight = false;
+        //    bool right = false;
+        //    bool bottomRight = false;
+        //    bool bottom = false;
+        //    bool bottomLeft = false;
+        //    bool left = false;
+        //    bool isAlive = false;
+        //    int generationsPassed;
+
+        //    //CHECK IF ALIVE
+        //    //figure out if alive or not
+        //    if (status == 2)
+        //    {
+        //        isAlive = true;
+        //    }
+        //    else
+        //    {
+        //        isAlive = false;
+        //    }
+
+        //    //CHECK IF PREVIOUSLY CREATED, IF NOT, CHECK IF HAS ADJACENT CELLS
+        //    //pass through if beencreated = false?
+        //    if (beenCreated = false)
+        //    {
+        //        //disable multiple options if on corners
+        //        if(iValue == 0 && jValue == 0)
+        //        {
+        //            //top left corner
+        //            bottomLeft =false;
+        //            left = false;
+        //            topLeft = false;
+        //            top = false;
+        //            topRight = false;
+        //        }
+        //        if (iValue == 0 && jValue == 19)
+        //        {
+        //            //top right corner
+        //            topLeft = false;
+        //            top = false;
+        //            topRight = false;
+        //            right = false;
+        //            bottomRight = false;                                        
+        //        }
+        //        if (iValue == 19 && jValue == 0)
+        //        {
+        //            //bottom left
+        //            topLeft = false;
+        //            left = false;
+        //            bottomLeft = false;
+        //            bottom = false;
+        //            bottomRight = false;
+        //        }
+        //        if (iValue == 19 && jValue == 19)
+        //        {
+        //            //bottom right
+        //            bottomLeft = false;
+        //            bottom = false;
+        //            bottomRight = false;
+        //            right = false;
+        //            topRight = false;
+        //        }
+        //        //disable side if on edge
+        //        if (iValue > 0 && iValue < 19 && jValue == 0)
+        //        {
+        //            //left edge
+        //            left = false;
+        //        }
+        //        if (iValue == 0 && jValue > 0 && jValue < 19)
+        //        {
+        //            //top edge
+        //            top = false;
+        //        }
+        //        if (iValue > 0 && iValue < 19 && jValue == 19)
+        //        {
+        //            //right edge
+        //            right = false;
+        //        }
+        //        if (iValue == 19 && jValue > 0 && jValue < 19)
+        //        {
+        //            //bottom edge
+        //            bottom = false;
+        //        }
+
+        //    }
+           
+        //}
 
 
     }
+    //this is my class i've made, with the object createCell in, especially for use within the main Program class above
+    public class cellClass
+    {
+
+        private void createCell(int status, int iValue, int jValue)
+        {
+            /*status = 1 or 2. Dead or alive
+             *iValue = [i,] 
+             *jValue = [,j]
+             */
+            //this method creates the object which will be loaded into the array in the method above. it will contain
+            //various statements which will check if it has neighbors and whether it's alive
+            //It will do this, by examining 2 x int variables, relating to its place in the 2D array, when it's called.
+            /*1. CHECK IF CREATED BEFORE                                                                                                                            X
+             *2. CHECK POSITION AND WHAT ADJACENT CELLS IT HAS                                                                                                      X
+             *3. CHECK IF ALIVE                                                                                                                                     X
+             *4. ASSIGN TO 2D ARRAY
+             *5. SECOND RUN THROUGH, SKIP TO LOWER SECTION, IF ALREADY CREATED. IF ALIVE, ADD ANOTHER TO GEN. IF NOT, RESET TO 0
+             *6. CHECK ADJACENT CELLS, BASED UPON BOOLEANS SET DURING FIRST RUN THROUGH. USE MATHS IN ORDER TO CHECK.
+             *   Said checks will be multiple if statements. E.g if topLeft = true. So there will be 8 of them, checking adjacent cells and if theyre alive.
+             *   This will then tally towards an aliveNeighbours int, which then decides if the cell in question will still be alive.
+             *
+             */
+
+            bool beenCreated = false; //this will be recorded after creation, so further iterations can skip sections when this  = true 
+
+            bool topLeft = false;
+            bool top = false;
+            bool topRight = false;
+            bool right = false;
+            bool bottomRight = false;
+            bool bottom = false;
+            bool bottomLeft = false;
+            bool left = false;
+            bool isAlive = false;
+            int generationsPassed;
+
+            //CHECK IF ALIVE
+            //figure out if alive or not
+            if (status == 2)
+            {
+                isAlive = true;
+            }
+            else
+            {
+                isAlive = false;
+            }
+
+            //CHECK IF PREVIOUSLY CREATED, IF NOT, CHECK IF HAS ADJACENT CELLS
+            //pass through if beencreated = false?
+            if (beenCreated = false)
+            {
+                //disable multiple options if on corners
+                if (iValue == 0 && jValue == 0)
+                {
+                    //top left corner
+                    bottomLeft = false;
+                    left = false;
+                    topLeft = false;
+                    top = false;
+                    topRight = false;
+                }
+                if (iValue == 0 && jValue == 19)
+                {
+                    //top right corner
+                    topLeft = false;
+                    top = false;
+                    topRight = false;
+                    right = false;
+                    bottomRight = false;
+                }
+                if (iValue == 19 && jValue == 0)
+                {
+                    //bottom left
+                    topLeft = false;
+                    left = false;
+                    bottomLeft = false;
+                    bottom = false;
+                    bottomRight = false;
+                }
+                if (iValue == 19 && jValue == 19)
+                {
+                    //bottom right
+                    bottomLeft = false;
+                    bottom = false;
+                    bottomRight = false;
+                    right = false;
+                    topRight = false;
+                }
+                //disable side if on edge
+                if (iValue > 0 && iValue < 19 && jValue == 0)
+                {
+                    //left edge
+                    left = false;
+                }
+                if (iValue == 0 && jValue > 0 && jValue < 19)
+                {
+                    //top edge
+                    top = false;
+                }
+                if (iValue > 0 && iValue < 19 && jValue == 19)
+                {
+                    //right edge
+                    right = false;
+                }
+                if (iValue == 19 && jValue > 0 && jValue < 19)
+                {
+                    //bottom edge
+                    bottom = false;
+                }
+
+            }
+
+        }
+    }
+
 
     
     
