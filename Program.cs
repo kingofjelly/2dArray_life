@@ -45,6 +45,7 @@ namespace _2dArray
             Console.WriteLine("6 : Run game of life cells");
             Console.WriteLine("7 : Run 2DArray times table application");
             Console.WriteLine("8 : Run 2DArray and loop from 1 - 100");
+            Console.WriteLine("9 : Run OOP test method");
             userInput = Console.ReadLine();
 
             if (int.TryParse(userInput, out userChoice))//better than a parse, because it doesn't throw an exception. however parse better for handling?
@@ -76,6 +77,9 @@ namespace _2dArray
                         break;
                     case 8:
                         toHundred();
+                        break;
+                    case 9:
+                        OOPInteraction();
                         break;
                     default:
                         mainUserInterface();
@@ -285,6 +289,12 @@ namespace _2dArray
             Console.Write(" ");
         }
 
+        static void OOPInteraction()
+        {
+            OOPClass classInstance = new OOPClass();
+            Console.WriteLine(classInstance.ToString());//outputs namespace and class
+            
+        }
 
     }
 }
