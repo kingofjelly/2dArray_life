@@ -40,9 +40,11 @@ namespace _2dArray
             Console.WriteLine("1 : Run an application displaying a pyramid of asterisks");
             Console.WriteLine("2 : Run an older application displaying a pyramid of asterisks");
             Console.WriteLine("3 : Run the game of boggle");
-            Console.WriteLine("4 : Run game of life");
-            Console.WriteLine("5 : Run 2DArray times table application");
-            Console.WriteLine("6 : Run 2DArray and loop from 1 - 100");
+            Console.WriteLine("4 : Run game of life 1,2's");
+            Console.WriteLine("5 : Run game of life #, ");
+            Console.WriteLine("6 : Run game of life cells");
+            Console.WriteLine("7 : Run 2DArray times table application");
+            Console.WriteLine("8 : Run 2DArray and loop from 1 - 100");
             userInput = Console.ReadLine();
 
             if (int.TryParse(userInput, out userChoice))//better than a parse, because it doesn't throw an exception. however parse better for handling?
@@ -61,12 +63,18 @@ namespace _2dArray
                         boggleGame();
                         break;
                     case 4:
-                        gameOfLife();
+                        gameOfLifeNumber();
                         break;
                     case 5:
-                        timesTable();
+                        gameOfLifeHash();
                         break;
                     case 6:
+                        gameOfLife();
+                        break;
+                    case 7:
+                        timesTable();
+                        break;
+                    case 8:
                         toHundred();
                         break;
                     default:
@@ -181,6 +189,18 @@ namespace _2dArray
             Console.WriteLine("So you want to see game of life?");
             gOLClass lifeGrid = new gOLClass();
             lifeGrid.printGrid();//forms grid consisting of 0's or 1's
+        }
+        static void gameOfLifeNumber()
+        {
+            Console.WriteLine("So you want to see game of life?");
+            gOLClass lifeGrid = new gOLClass();
+            lifeGrid.printGridNumber();//forms grid consisting of 0's or 1's
+        }
+        static void gameOfLifeHash()
+        {
+            Console.WriteLine("So you want to see game of life?");
+            gOLClass lifeGrid = new gOLClass();
+            lifeGrid.printGridHash();//forms grid consisting of 0's or 1's
         }
 
         static void timesTable()
