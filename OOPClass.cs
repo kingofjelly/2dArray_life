@@ -11,7 +11,7 @@ namespace _2dArray
         //private methods: invisible to external classes
         //public methods: part of interface. other classes will interact with these.
         //this KEYWORD.
-
+        //THIS SECTION SHOULD BE WHERE VARIABLES ARE DECLARED
          private bool topLeft = false;
          private bool top = false;
          private bool topRight = false;
@@ -28,7 +28,9 @@ namespace _2dArray
 
         private void lifeCells()
         {
-            
+            //THIS SECTION SHOULD BE WHERE VARIABLES ARE INTERACTED WITH ABOVE
+
+
             ////for loop recursive. attempt to print a 20 x 20 grid of #
             ////after this, i'll attempt to change the grid so that a die is rolled for each cell. it will either consist of either 1 or 0.
             ////past this, it's a matter of encorporating an algorithm to checkadjacenet cells, then change contents depending on neighbours?

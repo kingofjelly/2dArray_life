@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cars.cs" />
     <Compile Include="gOLClass.cs" />
     <Compile Include="OOPClass.cs" />
     <Compile Include="Program.cs" />

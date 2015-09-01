@@ -44,59 +44,63 @@ namespace _2dArray
             OOPClass[,] lifeGrid = new OOPClass[20, 20];
             //cellClass[,] cellGrid = new cellClass[20, 20];//2d array of cell class objects
 
+            //TEST OUT BY MAKING A CAR CLASS. WHEELS. COLOR. LENGTH. WIDTH. ALL ATRIBUTES ASSOCIATED TO ONE CLASS
+            //CAN INHERIT, THEN ADD SPOILER SIZE FOR BELOW CLASS. INSTANTIATE THESE, THEN PUT INTO SPECIAL ARRAY.
+            //FOR EACH, IF COLOR == RED, DISPLAY X
 
-            ////GRID FOR FILLING TABLE WITH CELL CLASS
-            for (int i = 1; i <= 20; i++)
-            {
-                //i managed the grid going down. this ensures it will go down 20 lines
-                for (int j = 1; j <= 20; j++)
-                {
-                    //j manages going across horizontally. will makes sure it goes across 20 spaces.
-                    //this is the section where you'll need to populate it with the method below
-                    cellClass cellObj = new cellClass();
-                    //TO BE PASSED INTO METHOD
-                    randomReturnedNumber = randomNumer();
-                    iValue = i - 1;
-                    jValue = j - 1;
-                    cellObj.createCell
-                    cellGrid[i - 1, j - 1] = cellObj.createCell(randomReturnedNumber, iValue, jValue);
-                    //Console.Write(lifeGrid[i - 1, j - 1]);
-                }
-            }
+            //COMMENTED FROM HERE
+            //////GRID FOR FILLING TABLE WITH CELL CLASS
+            //for (int i = 1; i <= 20; i++)
+            //{
+            //    //i managed the grid going down. this ensures it will go down 20 lines
+            //    for (int j = 1; j <= 20; j++)
+            //    {
+            //        //j manages going across horizontally. will makes sure it goes across 20 spaces.
+            //        //this is the section where you'll need to populate it with the method below
+            //        cellClass cellObj = new cellClass();
+            //        //TO BE PASSED INTO METHOD
+            //        randomReturnedNumber = randomNumer();
+            //        iValue = i - 1;
+            //        jValue = j - 1;
+            //        cellObj.createCell
+            //        cellGrid[i - 1, j - 1] = cellObj.createCell(randomReturnedNumber, iValue, jValue);
+            //        //Console.Write(lifeGrid[i - 1, j - 1]);
+            //    }
+            //}
                   
             
 
-            //print the grid
-            for (int i = 1; i <= 20; i++)
-            {
-                //i managed the grid going down. this ensures it will go down 20 lines
-                for (int j = 1; j <= 20; j++)
-                {
-                    //j manages going across horizontally. will makes sure it goes across 20 spaces.
+            ////print the grid
+            //for (int i = 1; i <= 20; i++)
+            //{
+            //    //i managed the grid going down. this ensures it will go down 20 lines
+            //    for (int j = 1; j <= 20; j++)
+            //    {
+            //        //j manages going across horizontally. will makes sure it goes across 20 spaces.
 
-                    /*BELOW PRINTS EITHER 1 OR 2. ITERATION 1.0
-                      It's currently commented out and will remain that way. it was included for testing.
-                      What's currently below is the next iteration.*/
-                    //Console.Write(lifeGrid[i - 1, j - 1]);
+            //        /*BELOW PRINTS EITHER 1 OR 2. ITERATION 1.0
+            //          It's currently commented out and will remain that way. it was included for testing.
+            //          What's currently below is the next iteration.*/
+            //        //Console.Write(lifeGrid[i - 1, j - 1]);
 
-                    /*BELOW IT EITHER ADDS " " OR "#". ITERATION 1.1
-                     */
-                    if (lifeGrid[i - 1, j - 1] == "1")
-                    {
-                        Console.Write(" ");
-                    }
-                    if (lifeGrid[i - 1, j - 1] == "2")
-                    {
-                        Console.Write("#");
-                    }
-                    /*3rd iteration needs to pass in [i,j] to a method, for the cell to be created with an instance of the method/object below.
-                     *                      
-                     */
-                }
-                Console.WriteLine();
+            //        /*BELOW IT EITHER ADDS " " OR "#". ITERATION 1.1
+            //         */
+            //        if (lifeGrid[i - 1, j - 1] == "1")
+            //        {
+            //            Console.Write(" ");
+            //        }
+            //        if (lifeGrid[i - 1, j - 1] == "2")
+            //        {
+            //            Console.Write("#");
+            //        }
+            //        /*3rd iteration needs to pass in [i,j] to a method, for the cell to be created with an instance of the method/object below.
+            //         *                      
+            //         */
+            //    }
+            //    Console.WriteLine();
 
-            }    
-        
+            //}    
+        //TO HERE
         }
         //this is my class i've made, with the object createCell in, especially for use within the main Program class above
 

@@ -46,11 +46,12 @@ namespace _2dArray
             Console.WriteLine("7 : Run 2DArray times table application");
             Console.WriteLine("8 : Run 2DArray and loop from 1 - 100");
             Console.WriteLine("9 : Run OOP test method");
+            Console.WriteLine("10 : Run car creation method for OO learning");
             userInput = Console.ReadLine();
 
             if (int.TryParse(userInput, out userChoice))//better than a parse, because it doesn't throw an exception. however parse better for handling?
             {
-                Console.WriteLine(Choice.Asterisk.ToString());
+                //Console.WriteLine(Choice.Asterisk.ToString());
                 //switch statement here
                 switch (userChoice)
                 {
@@ -80,6 +81,9 @@ namespace _2dArray
                         break;
                     case 9:
                         OOPInteraction();
+                        break;
+                    case 10:
+                        createCar();
                         break;
                     default:
                         mainUserInterface();
@@ -294,6 +298,34 @@ namespace _2dArray
             OOPClass classInstance = new OOPClass();
             Console.WriteLine(classInstance.ToString());//outputs namespace and class
             
+        }
+
+        static void createCar()
+        {
+            Console.WriteLine("fou le fa fa");
+
+            string make = "ford";
+            string name = "Dave";
+            string color = "red";
+
+
+            cars myCar1 = new cars(make, name, color);
+
+            Console.WriteLine(myCar1.Color);
+
+            cars[] carArray = new cars[2];
+
+            for (int i = 0; i < carArray.Length; i++)
+            {
+                carArray[i] = new cars(make, name, color);//array of car objects has been made
+            }
+            carArray[1].Make = "Jaguar";//test of changing item within array
+            for (int i = 0; i < carArray.Length; i++)
+            {
+                Console.WriteLine(carArray[i].Make);
+                Console.WriteLine(carArray[i].Name);
+                Console.WriteLine(carArray[i].Color);
+            }
         }
 
     }
