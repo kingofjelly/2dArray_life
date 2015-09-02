@@ -295,8 +295,41 @@ namespace _2dArray
 
         static void OOPInteraction()
         {
-            OOPClass classInstance = new OOPClass();
-            Console.WriteLine(classInstance.ToString());//outputs namespace and class
+            //OOPClass classInstance = new OOPClass();
+            //Console.WriteLine(classInstance.ToString());//outputs namespace and class
+
+            OOPClass[,] OOPArray = new OOPClass[20, 20];
+            int iValue;
+            int jValue;
+            //FILL MY GRID
+
+            for (int i = 1; i <= 20; i++)
+            {
+                //i managed the grid going down. this ensures it will go down 20 lines
+                for (int j = 1; j <= 20; j++)
+                {
+                    //j manages going across horizontally. will makes sure it goes across 20 spaces.
+                    //this is the section where you'll need to populate it with the method below
+                    
+                    //TO BE PASSED INTO METHOD
+
+                    iValue = i - 1;
+                    jValue = j - 1;
+
+                    OOPArray[i - 1, j - 1] = new OOPClass(iValue, jValue);//ARRAY IS NOW POPULATED WITH OOPCLASS OBJECTS
+                    //Console.Write(lifeGrid[i - 1, j - 1]);
+                }
+            }
+            //NOW LOOP THROUGH ARRAY OF CUSTOM OBJECTS
+            for (int i = 1; i <= 20; i++)
+            {
+                //i managed the grid going down. this ensures it will go down 20 lines
+                for (int j = 1; j <= 20; j++)
+                {
+                    Console.Write(OOPArray[i - 1, j - 1 ].testChar);//test iteration, to view what cells have been set + confirm initialization
+                }
+                Console.WriteLine();
+            }
             
         }
 

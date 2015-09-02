@@ -38,10 +38,10 @@ namespace _2dArray
 
         public void printGrid()
         {
+           
+            //OOPClass cells = new OOPClass();
 
-            OOPClass cells = new OOPClass();
-
-            OOPClass[,] lifeGrid = new OOPClass[20, 20];
+            //OOPClass[,] lifeGrid = new OOPClass[20, 20];
             //cellClass[,] cellGrid = new cellClass[20, 20];//2d array of cell class objects
 
             //TEST OUT BY MAKING A CAR CLASS. WHEELS. COLOR. LENGTH. WIDTH. ALL ATRIBUTES ASSOCIATED TO ONE CLASS
