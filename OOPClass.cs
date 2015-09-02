@@ -51,6 +51,7 @@ namespace _2dArray
          public int iValue { get; set; }//X
          public int jValue { get; set; }//X
          public string testChar { get; set; }//used for testing after grid creation + population //X
+         public int aliveNeighbours { get; set; }//this will be accessed from main method, to tally up living neighbour cells
 
 
          public OOPClass(int ivalue, int jvalue)//down and right values. method below will work out what the above values should be
@@ -59,6 +60,7 @@ namespace _2dArray
             iValue = ivalue;
             jValue = jvalue;
             int alive = randomNumer();
+             
 
             //runs the RNG above, giving out a number. This is either 1 or 2. 1 = dead. 2 = alive. Depending on this, a different 
             //char will be assigned to testChar, for test visibility or the array, aftercreation.
@@ -87,30 +89,92 @@ namespace _2dArray
             {
                 testChar = "#";
             }
+
+            top = true;
+            topRight = true;
+            right = true;
+            bottomRight = true;
+            bottom = true;
+            bottomLeft = true;
+            left = true;
+            topLeft = true;
+
+            //set all booleans relating to position above to be true by default. Statements below will change them. This disables booleans depending on what neighbours it
+            //cannot possibly have.will therefore skip some methods in main Program.cs
+
+            if (iValue == 0 && jValue == 0)
+            {
+                //top left corner
+                bottomLeft = false;
+                left = false;
+                topLeft = false;
+                top = false;
+                topRight = false;
+            }
+            if (iValue == 0 && jValue == 19)
+            {
+                //top right corner
+                topLeft = false;
+                top = false;
+                topRight = false;
+                right = false;
+                bottomRight = false;
+            }
+            if (iValue == 19 && jValue == 0)
+            {
+                //bottom left
+                topLeft = false;
+                left = false;
+                bottomLeft = false;
+                bottom = false;
+                bottomRight = false;
+            }
+            if (iValue == 19 && jValue == 19)
+            {
+                //bottom right
+                bottomLeft = false;
+                bottom = false;
+                bottomRight = false;
+                right = false;
+                topRight = false;
+            }
+            //disable side if on edge
+            if (iValue > 0 && iValue < 19 && jValue == 0)
+            {
+                //left edge
+                left = false;
+                topLeft = false;
+                bottomLeft = false;
+            }
+            if (iValue == 0 && jValue > 0 && jValue < 19)
+            {
+                //top edge
+                top = false;
+                topLeft = false;
+                topRight = false;
+            }
+            if (iValue > 0 && iValue < 19 && jValue == 19)
+            {
+                //right edge
+                right = false;
+                topRight = false;
+                bottomRight = false;
+            }
+            if (iValue == 19 && jValue > 0 && jValue < 19)
+            {
+                //bottom edge
+                bottom = false;
+                bottomLeft = false;
+                bottomRight = false;
+            }
+
+
         }
 
 
+
+
         //BELOW IS ALL MY PREVIOUS WORKINGS, ALONG WITH WAYS TO CHECK WHETER IT'S AN EDGE OBJ
-
-
-      
-        //    //this method creates the object which will be loaded into the array in the method above. it will contain
-        //    //various statements which will check if it has neighbors and whether it's alive
-        //    //It will do this, by examining 2 x int variables, relating to its place in the 2D array, when it's called.
-        //    /*1. CHECK IF CREATED BEFORE                                                                                                                            X
-        //     *2. CHECK POSITION AND WHAT ADJACENT CELLS IT HAS                                                                                                      X
-        //     *3. CHECK IF ALIVE                                                                                                                                     X
-        //     *4. ASSIGN TO 2D ARRAY
-        //     *5. SECOND RUN THROUGH, SKIP TO LOWER SECTION, IF ALREADY CREATED. IF ALIVE, ADD ANOTHER TO GEN. IF NOT, RESET TO 0
-        //     *6. CHECK ADJACENT CELLS, BASED UPON BOOLEANS SET DURING FIRST RUN THROUGH. USE MATHS IN ORDER TO CHECK.
-        //     *   Said checks will be multiple if statements. E.g if topLeft = true. So there will be 8 of them, checking adjacent cells and if theyre alive.
-        //     *   This will then tally towards an aliveNeighbours int, which then decides if the cell in question will still be alive.
-        //     *
-        //     */
-
-        //    bool beenCreated = false; //this will be recorded after creation, so further iterations can skip sections when this  = true 
-      
-      
 
         //    //CHECK IF PREVIOUSLY CREATED, IF NOT, CHECK IF HAS ADJACENT CELLS
         //    //pass through if beencreated = false?
@@ -179,7 +243,7 @@ namespace _2dArray
 
         //}
 
-         public void updateGameOfLife()
+         public void updateGameOfLife()//Probably not needed now.
          {
              //this method is called, from within OOP calss, after entire grid has been instantiated.
          }
