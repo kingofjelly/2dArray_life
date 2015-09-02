@@ -7,23 +7,7 @@ namespace _2dArray
 {
     public class OOPClass//this is the actual class
     {
-        //to create this class, it needs to be instantiated. This needs to be done in the code containing the main method
-        //private methods: invisible to external classes
-        //public methods: part of interface. other classes will interact with these.
-        //this KEYWORD.
-        //THIS SECTION SHOULD BE WHERE VARIABLES ARE DECLARED
-         //private bool topLeft = false;
-         //private bool top = false;
-         //private bool topRight = false;
-         //private bool right = false;
-         //private bool bottomRight = false;
-         //private bool bottom = false;
-         //private bool bottomLeft = false;
-         //private bool left = false;
-         //private bool isAlive = false;
-         //private int generationsPassed;
-         //private int iValue = 0;
-         //private int jValue = 0;
+
 
         static Random numberGen = new Random();//this num gen is used called upon instantiasation of object
 
@@ -60,7 +44,21 @@ namespace _2dArray
             iValue = ivalue;
             jValue = jvalue;
             int alive = randomNumer();
-             
+            //bool l_topLeft = topLeft;
+            //bool l_top = top;
+            //bool l_topRight = topRight;
+            //bool l_right = right;
+            //bool l_bottomRight = bottomRight;
+            //bool l_bottom = bottom;
+            //bool l_bottomLeft = bottomLeft;
+            //bool l_left = left;
+            //bool l_isAlive = isAlive;
+            //int l_generationsPassed = generationsPassed;
+            ////public int iValue { get; set; }//X
+            ////public int jValue { get; set; }//X
+            //string l_testChar = testChar;
+            //int l_aliveNeighbours = aliveNeighbours;
+ 
 
             //runs the RNG above, giving out a number. This is either 1 or 2. 1 = dead. 2 = alive. Depending on this, a different 
             //char will be assigned to testChar, for test visibility or the array, aftercreation.
@@ -83,11 +81,11 @@ namespace _2dArray
              //set string for test initial display. Will replace @ with ""
             if (alive == 1)
             {
-                testChar = "@";
+                testChar = "#";
             }
             else
             {
-                testChar = "#";
+                testChar = " ";
             }
 
             top = true;
