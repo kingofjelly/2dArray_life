@@ -44,21 +44,7 @@ namespace _2dArray
             iValue = ivalue;
             jValue = jvalue;
             int alive = randomNumer();
-            //bool l_topLeft = topLeft;
-            //bool l_top = top;
-            //bool l_topRight = topRight;
-            //bool l_right = right;
-            //bool l_bottomRight = bottomRight;
-            //bool l_bottom = bottom;
-            //bool l_bottomLeft = bottomLeft;
-            //bool l_left = left;
-            //bool l_isAlive = isAlive;
-            //int l_generationsPassed = generationsPassed;
-            ////public int iValue { get; set; }//X
-            ////public int jValue { get; set; }//X
-            //string l_testChar = testChar;
-            //int l_aliveNeighbours = aliveNeighbours;
- 
+          
 
             //runs the RNG above, giving out a number. This is either 1 or 2. 1 = dead. 2 = alive. Depending on this, a different 
             //char will be assigned to testChar, for test visibility or the array, aftercreation.

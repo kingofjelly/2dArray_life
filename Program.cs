@@ -256,13 +256,13 @@ namespace _2dArray
             int[,] additionTable = new int[10, 10];
             // Fill the table
             int numberCounter = 0;//this is an int which will be used to tally up numbers
-            for (int i = 1; i <= 10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 //this is for values
                 //add 10 for each repeat? or at bottom
-                for (int j = 1; j <= 10; j++)
+                for (int j = 0; j < 10; j++)
                 {                   
-                    additionTable[i - 1, j - 1] = numberCounter + 1;
+                    additionTable[i, j] = numberCounter + 1;
                     numberCounter++;
                 }
 
