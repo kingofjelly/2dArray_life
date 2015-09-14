@@ -302,16 +302,16 @@ namespace _2dArray
             int userChoice;
             int milliseconds = 500;
 
-            OOPClass[,] OOPArray = new OOPClass[20, 20];
+            OOPClass[,] OOPArray = new OOPClass[50, 50];
             int iValue;
             int jValue;
             //POPULATE GRID HERE
             int neighborsAlive;
 
-            for (int i = 1; i <= 20; i++)
+            for (int i = 1; i <= 50; i++)
             {
                 //i managed the grid going down. this ensures it will go down 20 lines
-                for (int j = 1; j <= 20; j++)
+                for (int j = 1; j <= 50; j++)
                 {
                     //j manages going across horizontally. will makes sure it goes across 20 spaces.
                     //this is the section where you'll need to populate it with the method below
@@ -326,10 +326,10 @@ namespace _2dArray
                 }
             }
             //NOW LOOP THROUGH ARRAY OF CUSTOM OBJECTS AND DISPLAY THEM
-            for (int i = 1; i <= 20; i++)
+            for (int i = 1; i <= 50; i++)
             {
                 //i managed the grid going down. this ensures it will go down 20 lines
-                for (int j = 1; j <= 20; j++)
+                for (int j = 1; j <= 50; j++)
                 {
                     Console.Write(OOPArray[i - 1, j - 1 ].testChar);//test iteration, to view what cells have been set + confirm initialization
                 }
@@ -360,10 +360,10 @@ namespace _2dArray
                             //clear console to give impression it's updating
                             Thread.Sleep(milliseconds);
                             Console.Clear();
-                            for (int i = 1; i <= 20; i++)
+                            for (int i = 1; i <= 50; i++)
                             {
                                 //i managed the grid going down. this ensures it will go down 20 lines
-                                for (int j = 1; j <= 20; j++)
+                                for (int j = 1; j <= 50; j++)
                                 {
                                     //do code here.
                                     //Deal with:
@@ -442,9 +442,9 @@ namespace _2dArray
                             }
 
                             //LOOP THROUGH NOW TO CHANGE STATUS OF EACH CELL, DEPENDING ON LIVE NEIGHBORS AND RULES
-                            for (int i = 1; i <= 20; i++)
+                            for (int i = 1; i <= 50; i++)
                             {
-                                for (int j = 1; j <= 20; j++)
+                                for (int j = 1; j <= 50; j++)
                                 {
                                     //if under 2 live neighbours, dies by under population
                                     if (OOPArray[i - 1, j - 1].aliveNeighbours < 2 && OOPArray[i - 1, j - 1].isAlive == true)
@@ -470,10 +470,10 @@ namespace _2dArray
                             }
 
                             //FINALLY LOOP THROUGH AND DRAW DEPENDING UPON WHETHER ALIVE OR NOT
-                            for (int i = 1; i <= 20; i++)
+                            for (int i = 1; i <= 50; i++)
                             {
                                 //i managed the grid going down. this ensures it will go down 20 lines
-                                for (int j = 1; j <= 20; j++)
+                                for (int j = 1; j <= 50; j++)
                                 {
                                     if (OOPArray[i - 1, j - 1].isAlive == true)
                                     {

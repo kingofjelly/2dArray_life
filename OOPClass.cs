@@ -95,7 +95,7 @@ namespace _2dArray
                 top = false;
                 topRight = false;
             }
-            if (iValue == 0 && jValue == 19)
+            if (iValue == 0 && jValue == 49)
             {
                 //top right corner
                 topLeft = false;
@@ -104,7 +104,7 @@ namespace _2dArray
                 right = false;
                 bottomRight = false;
             }
-            if (iValue == 19 && jValue == 0)
+            if (iValue == 49 && jValue == 0)
             {
                 //bottom left
                 topLeft = false;
@@ -113,7 +113,7 @@ namespace _2dArray
                 bottom = false;
                 bottomRight = false;
             }
-            if (iValue == 19 && jValue == 19)
+            if (iValue == 49 && jValue == 49)
             {
                 //bottom right
                 bottomLeft = false;
@@ -123,28 +123,28 @@ namespace _2dArray
                 topRight = false;
             }
             //disable side if on edge
-            if (iValue > 0 && iValue < 19 && jValue == 0)
+            if (iValue > 0 && iValue < 49 && jValue == 0)
             {
                 //left edge
                 left = false;
                 topLeft = false;
                 bottomLeft = false;
             }
-            if (iValue == 0 && jValue > 0 && jValue < 19)
+            if (iValue == 0 && jValue > 0 && jValue < 49)
             {
                 //top edge
                 top = false;
                 topLeft = false;
                 topRight = false;
             }
-            if (iValue > 0 && iValue < 19 && jValue == 19)
+            if (iValue > 0 && iValue < 49 && jValue == 49)
             {
                 //right edge
                 right = false;
                 topRight = false;
                 bottomRight = false;
             }
-            if (iValue == 19 && jValue > 0 && jValue < 19)
+            if (iValue == 49 && jValue > 0 && jValue <49)
             {
                 //bottom edge
                 bottom = false;
