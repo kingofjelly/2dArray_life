@@ -308,6 +308,7 @@ namespace _2dArray
             //POPULATE GRID HERE
             int neighborsAlive;
 
+            //POPULATE GRID WITH NEW OBJECTS
             for (int i = 1; i <= 50; i++)
             {
                 //i managed the grid going down. this ensures it will go down 20 lines
@@ -325,7 +326,8 @@ namespace _2dArray
                     //Console.Write(lifeGrid[i - 1, j - 1]);
                 }
             }
-            //NOW LOOP THROUGH ARRAY OF CUSTOM OBJECTS AND DISPLAY THEM
+
+            //NOW LOOP THROUGH ARRAY OF CUSTOM OBJECTS AND DISPLAY THEM, BASED UPON INITIAL CREATION OF ALIVE OR DEAD
             for (int i = 1; i <= 50; i++)
             {
                 //i managed the grid going down. this ensures it will go down 20 lines
@@ -343,156 +345,308 @@ namespace _2dArray
 
             /*WHILE USER != Q. RE-RUN, CHANGING TESTCHAR AS NEEDED. RE-PRINT.*/
 
-            Console.WriteLine("Press 1 to begin GoL. 2 to Exit \n");
+            Console.WriteLine("Press 1 to begin GoL. 2 to Exit or 3 to automate the running.  \n");
+            //add in 3rd option for testing. really lengthens the code, but makes it easier for me
             userInput = Console.ReadLine();
             userChoice = int.Parse(userInput);
             Console.Clear();
             //if (int.TryParse(userInput, out userChoice))
             //{
                 //while (userChoice != 2) 
-                if (userChoice == 1)
-                    while (userChoice != 2)
-                    {
+            if (userChoice == 1)
+            {
+                while (userChoice != 2)
+                {
+                    
+                        //loop through and check neighbors/update
+
+                        Console.SetCursorPosition(0, 0);
+                        //clear console to give impression it's updating
+                        Thread.Sleep(milliseconds);
+                        Console.Clear();
+                        for (int i = 1; i <= 50; i++)
                         {
-                            //loop through and check neighbors/update
-
-                            Console.SetCursorPosition(0, 0);
-                            //clear console to give impression it's updating
-                            Thread.Sleep(milliseconds);
-                            Console.Clear();
-                            for (int i = 1; i <= 50; i++)
+                            //i managed the grid going down. this ensures it will go down 20 lines
+                            for (int j = 1; j <= 50; j++)
                             {
-                                //i managed the grid going down. this ensures it will go down 20 lines
-                                for (int j = 1; j <= 50; j++)
+                                //do code here.
+                                //Deal with:
+                                //1. Check neighbors + add to is neighbor alive. Reset to 0 each loop?
+                                //2. 
+                                /*BELOW WILL ONLY RUN IF IT HAS NEIGHBORS*/
+
+                                OOPArray[i - 1, j - 1].aliveNeighbours = 0;//RESETS THE INDIVIDUAL CELLS NEIGHBOUR COUNT TO 0, WHEN RE-CALLED
+
+                                if (OOPArray[i - 1, j - 1].topLeft == true)//if it has a top left neighbout
                                 {
-                                    //do code here.
-                                    //Deal with:
-                                    //1. Check neighbors + add to is neighbor alive. Reset to 0 each loop?
-                                    //2. 
-                                    /*BELOW WILL ONLY RUN IF IT HAS NEIGHBORS*/
-
-                                    OOPArray[i - 1, j - 1].aliveNeighbours = 0;//RESETS THE INDIVIDUAL CELLS NEIGHBOUR COUNT TO 0, WHEN RE-CALLED
-
-                                    if (OOPArray[i - 1, j - 1].topLeft == true)//if it has a top left neighbout
+                                    if (OOPArray[i - 2, j - 2].isAlive == true)//-2 as we're going up a level and back one
                                     {
-                                        if (OOPArray[i - 2, j - 2].isAlive == true)//-2 as we're going up a level and back one
-                                        {
-                                            OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
-                                        }
+                                        OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
                                     }
+                                }
 
-                                    if (OOPArray[i - 1, j - 1].top == true)
+                                if (OOPArray[i - 1, j - 1].top == true)
+                                {
+                                    if (OOPArray[i - 2, j - 1].isAlive == true)//-2 as we're going up a level only
                                     {
-                                        if (OOPArray[i - 2, j - 1].isAlive == true)//-2 as we're going up a level only
-                                        {
-                                            OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
-                                        }
+                                        OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
                                     }
+                                }
 
-                                    if (OOPArray[i - 1, j - 1].topRight == true)//-2 and 0 as we're going up one and to the right
+                                if (OOPArray[i - 1, j - 1].topRight == true)//-2 and 0 as we're going up one and to the right
+                                {
+                                    if (OOPArray[i - 2, j].isAlive == true)//-2 as we're going up a level right one
                                     {
-                                        if (OOPArray[i - 2, j].isAlive == true)//-2 as we're going up a level right one
-                                        {
-                                            OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
-                                        }
+                                        OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
                                     }
+                                }
 
-                                    if (OOPArray[i - 1, j - 1].right == true)
+                                if (OOPArray[i - 1, j - 1].right == true)
+                                {
+                                    if (OOPArray[i - 1, j].isAlive == true)//we're going just one to right
                                     {
-                                        if (OOPArray[i - 1, j].isAlive == true)//we're going just one to right
-                                        {
-                                            OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
-                                        }
+                                        OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
                                     }
+                                }
 
-                                    if (OOPArray[i - 1, j - 1].bottomRight == true)
+                                if (OOPArray[i - 1, j - 1].bottomRight == true)
+                                {
+                                    if (OOPArray[i, j].isAlive == true)//we're going down 1, 1 to right
                                     {
-                                        if (OOPArray[i, j].isAlive == true)//we're going down 1, 1 to right
-                                        {
-                                            OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
-                                        }
+                                        OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
                                     }
+                                }
 
-                                    if (OOPArray[i - 1, j - 1].bottom == true)
+                                if (OOPArray[i - 1, j - 1].bottom == true)
+                                {
+                                    if (OOPArray[i, j - 1].isAlive == true)//we're going down 1, 1 to right
                                     {
-                                        if (OOPArray[i, j - 1].isAlive == true)//we're going down 1, 1 to right
-                                        {
-                                            OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
-                                        }
+                                        OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
                                     }
+                                }
 
-                                    if (OOPArray[i - 1, j - 1].bottomLeft == true)
+                                if (OOPArray[i - 1, j - 1].bottomLeft == true)
+                                {
+                                    if (OOPArray[i, j - 2].isAlive == true)//we're going down 1, 1 to right
                                     {
-                                        if (OOPArray[i, j - 2].isAlive == true)//we're going down 1, 1 to right
-                                        {
-                                            OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
-                                        }
+                                        OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
                                     }
+                                }
 
-                                    if (OOPArray[i - 1, j - 1].left == true)
+                                if (OOPArray[i - 1, j - 1].left == true)
+                                {
+                                    if (OOPArray[i - 1, j - 2].isAlive == true)//we're going down 1, 1 to right
                                     {
-                                        if (OOPArray[i - 1, j - 2].isAlive == true)//we're going down 1, 1 to right
-                                        {
-                                            OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
-                                        }
+                                        OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
                                     }
-
                                 }
 
                             }
 
-                            //LOOP THROUGH NOW TO CHANGE STATUS OF EACH CELL, DEPENDING ON LIVE NEIGHBORS AND RULES
-                            for (int i = 1; i <= 50; i++)
-                            {
-                                for (int j = 1; j <= 50; j++)
-                                {
-                                    //if under 2 live neighbours, dies by under population
-                                    if (OOPArray[i - 1, j - 1].aliveNeighbours < 2 && OOPArray[i - 1, j - 1].isAlive == true)
-                                    {
-                                        OOPArray[i - 1, j - 1].isAlive = false;//it dies
-                                    }
-                                    //if 2 or 3 neighbours, cell remains alive
-                                    if (OOPArray[i - 1, j - 1].aliveNeighbours == 2 && OOPArray[i - 1, j - 1].isAlive == true || OOPArray[i - 1, j - 1].aliveNeighbours == 3 && OOPArray[i - 1, j - 1].isAlive == true)
-                                    {
-                                        OOPArray[i - 1, j - 1].isAlive = true;//
-                                    }
-                                    //if over 3 neighbours alive, cell dies due to overcrowding
-                                    if (OOPArray[i - 1, j - 1].aliveNeighbours > 3 && OOPArray[i - 1, j - 1].isAlive == true)
-                                    {
-                                        OOPArray[i - 1, j - 1].isAlive = false;
-                                    }
-                                    //if dead && neighbours = 3, alive due to repopulation
-                                    if (OOPArray[i - 1, j - 1].aliveNeighbours == 3 && OOPArray[i - 1, j - 1].isAlive == false)
-                                    {
-                                        OOPArray[i - 1, j - 1].isAlive = true;
-                                    }
-                                }
-                            }
+                        }
 
-                            //FINALLY LOOP THROUGH AND DRAW DEPENDING UPON WHETHER ALIVE OR NOT
-                            for (int i = 1; i <= 50; i++)
+                        //LOOP THROUGH NOW TO CHANGE STATUS OF EACH CELL, DEPENDING ON LIVE NEIGHBORS AND RULES
+                        for (int i = 1; i <= 50; i++)
+                        {
+                            for (int j = 1; j <= 50; j++)
                             {
-                                //i managed the grid going down. this ensures it will go down 20 lines
-                                for (int j = 1; j <= 50; j++)
+                                //if under 2 live neighbours, dies by under population
+                                if (OOPArray[i - 1, j - 1].aliveNeighbours < 2 && OOPArray[i - 1, j - 1].isAlive == true)
                                 {
-                                    if (OOPArray[i - 1, j - 1].isAlive == true)
-                                    {
-                                        Console.Write("#");
-                                    }
-                                    else
-                                    {
-                                        Console.Write(" ");
-                                    }
-
+                                    OOPArray[i - 1, j - 1].isAlive = false;//it dies
                                 }
-                                Console.WriteLine();
+                                //if 2 or 3 neighbours, cell remains alive
+                                if (OOPArray[i - 1, j - 1].aliveNeighbours == 2 && OOPArray[i - 1, j - 1].isAlive == true || OOPArray[i - 1, j - 1].aliveNeighbours == 3 && OOPArray[i - 1, j - 1].isAlive == true)
+                                {
+                                    OOPArray[i - 1, j - 1].isAlive = true;//
+                                }
+                                //if over 3 neighbours alive, cell dies due to overcrowding
+                                if (OOPArray[i - 1, j - 1].aliveNeighbours > 3 && OOPArray[i - 1, j - 1].isAlive == true)
+                                {
+                                    OOPArray[i - 1, j - 1].isAlive = false;
+                                }
+                                //if dead && neighbours = 3, alive due to repopulation
+                                if (OOPArray[i - 1, j - 1].aliveNeighbours == 3 && OOPArray[i - 1, j - 1].isAlive == false)
+                                {
+                                    OOPArray[i - 1, j - 1].isAlive = true;
+                                }
                             }
                         }
-                        Console.WriteLine("What now?");
-                        userInput = Console.ReadLine();
-                        userChoice = int.Parse(userInput);
-                    } //while (Console.Read() != 'q') ;//WHILE USER DOESNT ENTER Q, KEEP RE-DOING/UPDATING GRID
+
+                        //FINALLY LOOP THROUGH AND DRAW DEPENDING UPON WHETHER ALIVE OR NOT
+                        for (int i = 1; i <= 50; i++)
+                        {
+                            //i managed the grid going down. this ensures it will go down 20 lines
+                            for (int j = 1; j <= 50; j++)
+                            {
+                                if (OOPArray[i - 1, j - 1].isAlive == true)
+                                {
+                                    Console.Write("#");
+                                }
+                                else
+                                {
+                                    Console.Write(" ");
+                                }
+
+                            }
+                            Console.WriteLine();
+                        }
+                    
+                    Console.WriteLine("What now?");
+                    userInput = Console.ReadLine();
+                    userChoice = int.Parse(userInput);
+                } //while (Console.Read() != 'q') ;//WHILE USER DOESNT ENTER Q, KEEP RE-DOING/UPDATING GRID
+            }
             //}
+            //let it auto loop now if user presses 3
+            if (userChoice == 3)
+            {
+                do
+                {
+                    while(! Console.KeyAvailable)
+                    {
+                
+                    
+                //loop through and check neighbors/update
+
+                Console.SetCursorPosition(0, 0);
+                //clear console to give impression it's updating
+                Thread.Sleep(milliseconds);
+                Console.Clear();
+                for (int i = 1; i <= 50; i++)
+                {
+                    //i managed the grid going down. this ensures it will go down 20 lines
+                    for (int j = 1; j <= 50; j++)
+                    {
+                        //do code here.
+                        //Deal with:
+                        //1. Check neighbors + add to is neighbor alive. Reset to 0 each loop?
+                        //2. 
+                        /*BELOW WILL ONLY RUN IF IT HAS NEIGHBORS*/
+
+                        OOPArray[i - 1, j - 1].aliveNeighbours = 0;//RESETS THE INDIVIDUAL CELLS NEIGHBOUR COUNT TO 0, WHEN RE-CALLED
+
+                        if (OOPArray[i - 1, j - 1].topLeft == true)//if it has a top left neighbout
+                        {
+                            if (OOPArray[i - 2, j - 2].isAlive == true)//-2 as we're going up a level and back one
+                            {
+                                OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
+                            }
+                        }
+
+                        if (OOPArray[i - 1, j - 1].top == true)
+                        {
+                            if (OOPArray[i - 2, j - 1].isAlive == true)//-2 as we're going up a level only
+                            {
+                                OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
+                            }
+                        }
+
+                        if (OOPArray[i - 1, j - 1].topRight == true)//-2 and 0 as we're going up one and to the right
+                        {
+                            if (OOPArray[i - 2, j].isAlive == true)//-2 as we're going up a level right one
+                            {
+                                OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
+                            }
+                        }
+
+                        if (OOPArray[i - 1, j - 1].right == true)
+                        {
+                            if (OOPArray[i - 1, j].isAlive == true)//we're going just one to right
+                            {
+                                OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
+                            }
+                        }
+
+                        if (OOPArray[i - 1, j - 1].bottomRight == true)
+                        {
+                            if (OOPArray[i, j].isAlive == true)//we're going down 1, 1 to right
+                            {
+                                OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
+                            }
+                        }
+
+                        if (OOPArray[i - 1, j - 1].bottom == true)
+                        {
+                            if (OOPArray[i, j - 1].isAlive == true)//we're going down 1, 1 to right
+                            {
+                                OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
+                            }
+                        }
+
+                        if (OOPArray[i - 1, j - 1].bottomLeft == true)
+                        {
+                            if (OOPArray[i, j - 2].isAlive == true)//we're going down 1, 1 to right
+                            {
+                                OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
+                            }
+                        }
+
+                        if (OOPArray[i - 1, j - 1].left == true)
+                        {
+                            if (OOPArray[i - 1, j - 2].isAlive == true)//we're going down 1, 1 to right
+                            {
+                                OOPArray[i - 1, j - 1].aliveNeighbours++;//add one to this variable
+                            }
+                        }
+
+                    }
+
+                }
+
+                //LOOP THROUGH NOW TO CHANGE STATUS OF EACH CELL, DEPENDING ON LIVE NEIGHBORS AND RULES
+                for (int i = 1; i <= 50; i++)
+                {
+                    for (int j = 1; j <= 50; j++)
+                    {
+                        //if under 2 live neighbours, dies by under population
+                        if (OOPArray[i - 1, j - 1].aliveNeighbours < 2 && OOPArray[i - 1, j - 1].isAlive == true)
+                        {
+                            OOPArray[i - 1, j - 1].isAlive = false;//it dies
+                        }
+                        //if 2 or 3 neighbours, cell remains alive
+                        if (OOPArray[i - 1, j - 1].aliveNeighbours == 2 && OOPArray[i - 1, j - 1].isAlive == true || OOPArray[i - 1, j - 1].aliveNeighbours == 3 && OOPArray[i - 1, j - 1].isAlive == true)
+                        {
+                            OOPArray[i - 1, j - 1].isAlive = true;//
+                        }
+                        //if over 3 neighbours alive, cell dies due to overcrowding
+                        if (OOPArray[i - 1, j - 1].aliveNeighbours > 3 && OOPArray[i - 1, j - 1].isAlive == true)
+                        {
+                            OOPArray[i - 1, j - 1].isAlive = false;
+                        }
+                        //if dead && neighbours = 3, alive due to repopulation
+                        if (OOPArray[i - 1, j - 1].aliveNeighbours == 3 && OOPArray[i - 1, j - 1].isAlive == false)
+                        {
+                            OOPArray[i - 1, j - 1].isAlive = true;
+                        }
+                    }
+                }
+
+                //FINALLY LOOP THROUGH AND DRAW DEPENDING UPON WHETHER ALIVE OR NOT
+                for (int i = 1; i <= 50; i++)
+                {
+                    //i managed the grid going down. this ensures it will go down 20 lines
+                    for (int j = 1; j <= 50; j++)
+                    {
+                        if (OOPArray[i - 1, j - 1].isAlive == true)
+                        {
+                            Console.Write("#");
+                        }
+                        else
+                        {
+                            Console.Write(" ");
+                        }
+
+                    }
+                    Console.WriteLine();
+                }
+                }
+            }while (Console.ReadKey(true).Key != ConsoleKey.Escape);
+
+            }
+                
+                  
+            
         }
 
         static void createCar()
